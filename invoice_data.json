@@ -19,15 +19,15 @@
       {
         "id": "1",
         "description": "Fullstack Engineering",
-        "unit": "Jour",
+        "unit": "Day",
         "quantity": 5,
-        "price": 380.00,
+        "price": 450.00,
         "VAT_PCT": 20
       },
       {
         "id": "2",
         "description": "Astreinte",
-        "unit": "Heure",
+        "unit": "Hour",
         "quantity": 10,
         "price": 50.00,
         "VAT_PCT": 20

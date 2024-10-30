@@ -6,3 +6,18 @@ Automate the creation and management of invoices for a business or freelancer. T
 ![alt text](https://i.imgur.com/ShPyniT.png)
 
 WIP, soon making a GUI would be a great step forward, a local python webservice.
+TODO :
+
+The idea would be to have a local environment that will support:
+
+- Sales tracking, data can be stored in storage as on a third party DB.
+
+- A minimalist interface accepting only inputs, design management is static.
+
+- Improve design by alignment.
+
+- VAT activation/deactivation.
+
+- A backup on an external cloud.
+
+I really insist on the fact that this is a local, open-source service.

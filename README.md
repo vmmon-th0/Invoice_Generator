@@ -5,3 +5,4 @@ Automate the creation and management of invoices for a business or freelancer. T
 ## Invoice preview :
 ![alt text](https://i.imgur.com/ShPyniT.png)
 
+WIP, soon making a GUI would be a great step forward, a local python webservice.

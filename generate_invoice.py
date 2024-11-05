@@ -10,7 +10,7 @@ class InvoicePDF(FPDF):
 
     def footer(self):
         self.set_y(-30)
-        self.set_font("Times", "I", 8)
+        self.set_font("Times", "I", 10)
         self.cell(0, 10, f"Page {self.page_no()}", 0, 0, "C")
 
     def add_info(self, data, invoice_ref, issue_date):
@@ -97,14 +97,14 @@ class InvoicePDF(FPDF):
 
         # Summary
         self.set_xy(summary_x, top_y)
-        self.cell(50, 10, "Total Excl. VAT", 1, 0)
-        self.cell(20, 10, f"{total_ht:.2f}EUR", 1, 1, "R")
+        self.cell(45, 10, "Total Excl. VAT", 1, 0)
+        self.cell(25, 10, f"{total_ht:.2f}EUR", 1, 1, "R")
         self.set_x(summary_x)
-        self.cell(50, 10, "Total VAT", 1, 0)
-        self.cell(20, 10, f"{total_tva:.2f}EUR", 1, 1, "R")
+        self.cell(45, 10, "Total VAT", 1, 0)
+        self.cell(25, 10, f"{total_tva:.2f}EUR", 1, 1, "R")
         self.set_x(summary_x)
-        self.cell(50, 10, "Total Incl. VAT", 1, 0)
-        self.cell(20, 10, f"{total_ttc:.2f}EUR", 1, 1, "R")
+        self.cell(45, 10, "Total Incl. VAT", 1, 0)
+        self.cell(25, 10, f"{total_ttc:.2f}EUR", 1, 1, "R")
 
 def generate_invoice(days_worked, json_path="invoice_data.json"):
     # Load data from JSON
@@ -129,7 +129,7 @@ def generate_invoice(days_worked, json_path="invoice_data.json"):
     pdf.add_table(data["prestations"])
 
     # Save PDF
-    pdf.output("freelance_invoice.pdf")
-    print("Invoice generated: freelance_invoice.pdf")
+    pdf.output(f"invoice_{invoice_ref}.pdf")
+    print("Invoice generated: invoice.pdf")
 
 generate_invoice(days_worked=5)

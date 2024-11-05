@@ -10,6 +10,8 @@ TODO :
 
 The idea would be to have a local environment that will support:
 
+- More informations about prestations
+
 - Sales tracking, data can be stored in storage as on a third party DB.
 
 - A minimalist interface accepting only inputs, design management is static.

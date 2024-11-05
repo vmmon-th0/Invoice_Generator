@@ -10,6 +10,10 @@ TODO :
 
 The idea would be to have a local environment that will support:
 
+- Create JSON standart + doc
+
+- Create .conf file for local dev
+
 - More informations about prestations
 
 - Sales tracking, data can be stored in storage as on a third party DB.

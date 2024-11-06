@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Check if INVOICE_CONF is already defined
-if [ -n "$INVOICE_CONF" ]; then
-    echo "The environment variable INVOICE_CONF is already set to: $INVOICE_CONF"
+# Check if INVOICE_GEN_CONF is already defined
+if [ -n "$INVOICE_GEN_CONF" ]; then
+    echo "The environment variable INVOICE_GEN_CONF is already set to: $INVOICE_GEN_CONF"
     read -p "Do you want to replace it? [y/N]: " overwrite_conf
     if [[ "$overwrite_conf" != "y" && "$overwrite_conf" != "Y" ]]; then
         echo "Operation canceled."
@@ -24,15 +24,15 @@ if [ ! -d "$conf_path" ]; then
     fi
 fi
 
-# Set the INVOICE_CONF environment variable
-export INVOICE_CONF="$conf_path"
-echo "INVOICE_CONF set to $INVOICE_CONF"
+# Set the INVOICE_GEN_CONF environment variable
+export INVOICE_GEN_CONF="$conf_path"
+echo "INVOICE_GEN_CONF set to $INVOICE_GEN_CONF"
 
-# Add INVOICE_CONF to the shell profile
-read -p "Do you want to add INVOICE_CONF to your shell profile (~/.bashrc)? [y/N]: " add_to_profile
+# Add INVOICE_GEN_CONF to the shell profile
+read -p "Do you want to add INVOICE_GEN_CONF to your shell profile (~/.bashrc)? [y/N]: " add_to_profile
 if [[ "$add_to_profile" == "y" || "$add_to_profile" == "Y" ]]; then
-    echo "export INVOICE_CONF=\"$conf_path\"" >> ~/.bashrc
-    echo "INVOICE_CONF has been added to ~/.bashrc"
+    echo "export INVOICE_GEN_CONF=\"$conf_path\"" >> ~/.bashrc
+    echo "INVOICE_GEN_CONF has been added to ~/.bashrc"
 fi
 
 # Path to the configuration file

@@ -4,7 +4,8 @@
       "address": "123 Rue de la Paix",
       "city": "75001 Paris",
       "phone": "+33 1 23 45 67 89",
-      "email": "ammon.schiffer@gmail.com",
+      "email": "example@gmail.com",
+      "SIRET": "93701321636777",
       "VAT_number": "FR123456789"
     },
     "client_info": {
@@ -12,7 +13,8 @@
       "address": "456 Avenue des Champs-Élysées",
       "city": "75008 Paris",
       "phone": "+33 1 98 76 54 32",
-      "email": "contact@entreprise-xyz.com",
+      "email": "example@example.com",
+      "SIRET": "93701321636778",
       "VAT_number": "FR987654321"
     },
     "prestations": [

@@ -119,7 +119,10 @@ def generate_invoice(json_path="invoice_data.json"):
     if not config_path:
         raise EnvironmentError("The environment variable INVOICE_GEN_CONF is not set.")
 
-    config_file_path = os.path.join(config_path, 'configuration.ini')
+    config_file_path = os.path.join(config_path, '.invoice_gen_conf.ini')
+
+    print(config_path)
+    print(config_file_path)
 
     if not os.path.exists(config_file_path):
         raise FileNotFoundError(f"The configuration file was not found at {config_file_path}.")
@@ -148,6 +151,6 @@ def generate_invoice(json_path="invoice_data.json"):
     pdf_output_path = os.path.join(invoices_location, pdf_filename)
     pdf.output(pdf_output_path)
     
-    print("Invoice generated: invoice.pdf")
+    print(f"Invoice generated: {pdf_filename}")
 
 generate_invoice()

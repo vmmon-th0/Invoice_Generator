@@ -29,14 +29,14 @@ export INVOICE_GEN_CONF="$conf_path"
 echo "INVOICE_GEN_CONF set to $INVOICE_GEN_CONF"
 
 # Add INVOICE_GEN_CONF to the shell profile
-read -p "Do you want to add INVOICE_GEN_CONF to your shell profile (~/.bashrc)? [y/N]: " add_to_profile
+read -p "Do you want to add INVOICE_GEN_CONF to your shell profile (~/.zshrc) ? [y/N]: " add_to_profile
 if [[ "$add_to_profile" == "y" || "$add_to_profile" == "Y" ]]; then
-    echo "export INVOICE_GEN_CONF=\"$conf_path\"" >> ~/.bashrc
-    echo "INVOICE_GEN_CONF has been added to ~/.bashrc"
+    echo "export INVOICE_GEN_CONF=\"$conf_path\"" >> ~/.zshrc
+    echo "INVOICE_GEN_CONF has been added to ~/.zshrc"
 fi
 
 # Path to the configuration file
-conf_file="$conf_path/configuration.ini"
+conf_file="$conf_path/.invoice_gen_conf.ini"
 
 # Check if the configuration file already exists
 if [ -f "$conf_file" ]; then

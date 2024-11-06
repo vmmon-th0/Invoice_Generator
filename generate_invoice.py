@@ -1,5 +1,7 @@
+import os
 import json
 import datetime
+import configparser
 from fpdf import FPDF
 
 class InvoicePDF(FPDF):
@@ -106,15 +108,28 @@ class InvoicePDF(FPDF):
         self.cell(45, 10, "Total Incl. VAT", 1, 0)
         self.cell(25, 10, f"{total_ttc:.2f}EUR", 1, 1, "R")
 
-def generate_invoice(days_worked, json_path="invoice_data.json"):
+def generate_invoice(json_path="invoice_data.json"):
     # Load data from JSON
     with open(json_path, "r") as file:
         data = json.load(file)
 
-    # Update prestations based on days worked
-    for prestation in data["prestations"]:
-        if prestation["description"] == "Fullstack Engineering":
-            prestation["quantity"] = days_worked
+    # Read conf file
+    config_path = os.environ.get('INVOICE_GEN_CONF')
+
+    if not config_path:
+        raise EnvironmentError("The environment variable INVOICE_GEN_CONF is not set.")
+
+    config_file_path = os.path.join(config_path, 'configuration.ini')
+
+    if not os.path.exists(config_file_path):
+        raise FileNotFoundError(f"The configuration file was not found at {config_file_path}.")
+    
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+    invoices_location = config['path']['invoices_location']
+
+    if not os.path.exists(invoices_location):
+        raise FileNotFoundError(f"The specified path could not be found ; {invoices_location}.")
 
     # Generate PDF
     pdf = InvoicePDF()
@@ -129,7 +144,10 @@ def generate_invoice(days_worked, json_path="invoice_data.json"):
     pdf.add_table(data["prestations"])
 
     # Save PDF
-    pdf.output(f"invoice_{invoice_ref}.pdf")
+    pdf_filename = f"invoice_{invoice_ref}.pdf"
+    pdf_output_path = os.path.join(invoices_location, pdf_filename)
+    pdf.output(pdf_output_path)
+    
     print("Invoice generated: invoice.pdf")
 
-generate_invoice(days_worked=5)
+generate_invoice()

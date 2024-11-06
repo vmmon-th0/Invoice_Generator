@@ -8,6 +8,46 @@ Automate the creation and management of invoices for a business or freelancer. T
 WIP, soon making a GUI would be a great step forward, a local python webservice.
 TODO :
 
+## Structure of our data (JSON)
+
+```
+{
+    "my_info": {
+      "name": "Ammon Schiffer",
+      "address": "5 random avenue",
+      "city": "75001 somewhere",
+      "phone": "+33 6 23 45 67 89",
+      "email": "example@gmail.com",
+      "SIRET": "12345678912345",
+      "VAT_number": "FR12345678912"
+    },
+    "client_info": {
+      "name": "GITHUB CORP",
+      "address": "6 random avenue",
+      "city": "75001 somewhere",
+      "phone": "01 71 05 38 32",
+      "email": "example@gmail.com",
+      "SIRET": "12345678912345",
+      "VAT_number": "FR12345678912"
+    },
+    "prestations": [
+      {
+        "id": "1",
+        "description": "Fullstack Engineering",
+        "unit": "Day",
+        "quantity": 20,
+        "price": 500.00,
+        "VAT_PCT": 0
+      },
+      {
+        // etc.
+      }
+    ]
+}
+```
+
+## TODO
+
 The idea would be to have a local environment that will support:
 
 - Create JSON standart + doc

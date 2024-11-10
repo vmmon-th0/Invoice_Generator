@@ -85,7 +85,7 @@ class InvoicePDF(FPDF):
         if notes:
             self.ln(5)
             self.set_font("Times", "", 10)
-            self.multi_cell(0, 10, f"Additional informations: {notes}", 0, "L")
+            self.multi_cell(0, 5, f"Additional informations: {notes}", 0, "L")
 
         # Align Payment Terms and Summary side by side
         self.ln(10)

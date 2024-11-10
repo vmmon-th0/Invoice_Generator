@@ -42,7 +42,8 @@ TODO :
       {
         // etc.
       }
-    ]
+    ],
+    "notes": "lorem ipsum"
 }
 ```
 

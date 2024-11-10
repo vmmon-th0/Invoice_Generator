@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import datetime
 import configparser
@@ -49,7 +50,7 @@ class InvoicePDF(FPDF):
         self.cell(0, 5, "Payment Due Date: 30 days from receipt", 0, 1)
         self.ln(10)
 
-    def add_table(self, prestations):
+    def add_table(self, prestations, notes):
         # Table Header
         self.set_fill_color(200, 220, 255)
         self.cell(15, 10, "ID", 1, 0, "C", True)
@@ -79,6 +80,12 @@ class InvoicePDF(FPDF):
             self.cell(20, 10, f"{prestation['VAT_PCT']}%", 1, 0, "C")
             self.cell(20, 10, f"{amount_ht:.2f}EUR", 1, 0, "R")
             self.cell(20, 10, f"{amount_ttc:.2f}EUR", 1, 1, "R")
+
+        # Notes for invoice
+        if notes:
+            self.ln(5)
+            self.set_font("Times", "", 10)
+            self.multi_cell(0, 10, f"Additional informations: {notes}", 0, "L")
 
         # Align Payment Terms and Summary side by side
         self.ln(10)
@@ -144,7 +151,7 @@ def generate_invoice(json_path="invoice_data.json"):
 
     # Add sections
     pdf.add_info(data, invoice_ref, issue_date)
-    pdf.add_table(data["prestations"])
+    pdf.add_table(data["prestations"], data["notes"])
 
     # Save PDF
     pdf_filename = f"invoice_{invoice_ref}.pdf"
@@ -153,4 +160,4 @@ def generate_invoice(json_path="invoice_data.json"):
     
     print(f"Invoice generated: {pdf_filename}")
 
-generate_invoice()
+generate_invoice(sys.argv[1])
